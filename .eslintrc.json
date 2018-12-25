@@ -1,0 +1,28 @@
+{
+	"env": {
+		"node": true,
+		"browser": true,
+		"es6": true,
+		"jest": true
+	},
+	"plugins": [ "react", "react-native" ],
+	"parser": "babel-eslint",
+	"extends": [ "airbnb", "eslint:recommended" ],
+	"rules": {
+		"no-console": 2,
+		"import/no-extraneous-dependencies": [ "error", { "devDependencies": true } ]
+	},
+	"globals": [
+		"describe",
+		"test",
+		"jest",
+		"expect",
+		"fetch",
+		"navigator",
+		"__DEV__",
+		"XMLHttpRequest",
+		"FormData",
+		"React$Element"
+	],
+	"ignore": [ "ignite/**" ]
+}

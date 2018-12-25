@@ -1,0 +1,38 @@
+{
+	"generator-jhipster": {
+		"promptValues": {
+			"packageName": "com.luulsolutions.easypos",
+			"nativeLanguage": "en"
+		},
+		"jhipsterVersion": "5.5.0",
+		"applicationType": "monolith",
+		"baseName": "easyPOS",
+		"packageName": "com.luulsolutions.easypos",
+		"packageFolder": "com/luulsolutions/easypos",
+		"serverPort": "8080",
+		"authenticationType": "jwt",
+		"cacheProvider": "ehcache",
+		"enableHibernateCache": true,
+		"websocket": false,
+		"databaseType": "sql",
+		"devDatabaseType": "mysql",
+		"prodDatabaseType": "mysql",
+		"searchEngine": "elasticsearch",
+		"messageBroker": false,
+		"serviceDiscoveryType": false,
+		"buildTool": "maven",
+		"enableSwaggerCodegen": false,
+		"jwtSecretKey": "YjQxOTQxMzA2MTc3ZGYyNjM3MjUwNGIxZmJlNzMzM2ZkMTYyYTRkNGNmYjI2OTRjZTAwZDBlMzZjZTJiYzY2ZmM5NGY5MjA1NGNhZWM2YThiMDQwNzA5ZjdiNjJkYmU5M2E4NDUyNzAwZWY2MjJmNTk1YjNkYjE3ZmFhZTAyMjU=",
+		"clientFramework": "react",
+		"useSass": true,
+		"clientPackageManager": "npm",
+		"testFrameworks": [],
+		"jhiPrefix": "jhi",
+		"enableTranslation": true,
+		"nativeLanguage": "en",
+		"languages": [
+			"en",
+			"ar-ly"
+		]
+	}
+}

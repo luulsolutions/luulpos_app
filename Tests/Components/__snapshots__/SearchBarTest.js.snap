@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0)",
+      "flexDirection": "row",
+      "marginTop": 5,
+      "width": 375,
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 15,
+        },
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "rgba(0,0,0,0)",
+          "color": "white",
+          "left": 20,
+        },
+        Object {
+          "fontFamily": "FontAwesome",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoCorrect={false}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Search"
+    placeholderTextColor="white"
+    returnKeyType="search"
+    selectionColor="white"
+    style={
+      Object {
+        "alignSelf": "center",
+        "borderColor": "white",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "white",
+        "flex": 1,
+        "flexDirection": "row",
+        "fontFamily": "Avenir-Book",
+        "fontSize": undefined,
+        "height": 30,
+        "marginLeft": 1,
+        "marginRight": 10,
+        "padding": 5,
+        "paddingLeft": 30,
+        "textAlign": "left",
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "marginHorizontal": 10,
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "white",
+          "fontFamily": "Avenir-Book",
+          "fontSize": 17,
+        }
+      }
+    >
+      Cancel
+    </Text>
+  </View>
+</View>
+`;

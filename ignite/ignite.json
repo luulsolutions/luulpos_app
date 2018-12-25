@@ -1,0 +1,16 @@
+{
+	"name": "easypos",
+	"createdWith": "2.1.2",
+	"examples": "classic",
+	"jhipsterDirectory": "../../easypos",
+	"authType": "jwt",
+	"searchEngine": true,
+	"websockets": false,
+	"socialLogin": false,
+	"askToOverwrite": true,
+	"generators": {
+		"entity": "ignite-jhipster",
+		"import-jdl": "ignite-jhipster",
+		"upgrade": "ignite-jhipster"
+	}
+}
