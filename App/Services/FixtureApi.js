@@ -112,6 +112,12 @@ export default {
       data: require('../Fixtures/searchProfiles.json')
     }
   },
+  getEmployeTimeSheet: (profileId) => {
+    return {
+      ok: true,
+      data: require('../Fixtures/getEmployeTimeSheet.json')
+    }
+  },
   // ignite-jhipster-api-fixture-needle
 
   // user fixtures

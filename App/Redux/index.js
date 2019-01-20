@@ -13,6 +13,7 @@ export const reducers = combineReducers({
   productCategories: require('./ProductCategoryRedux').reducer,
   productVariants: require('./ProductVariantRedux').reducer,
   profiles: require('./ProfileRedux').reducer,
+  checks: require('./checkRedux').reducer,
   // ignite-jhipster-redux-store-import-needle
   account: require('./AccountRedux').reducer,
   login: require('./LoginRedux').reducer,

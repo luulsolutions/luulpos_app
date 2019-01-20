@@ -75,6 +75,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const searchOrders = query => api.get('api/_search/orders', { query });
 
   const getProducts = shopId => api.get('api/products-by-product-shop-id/{shopId}', shopId);
+ 
 
   const getProductByCategory = options => api.get(`api/products-by-product-category-id/${options.categoryId}`, options);
   
@@ -99,6 +100,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const searchProductVariants = query => api.get('api/_search/product-variants', { query });
 
   const getProfile = (email) => api.get('/api/profile-full-by-email/' + email);
+  const getEmployeeTimesheet = ProfileId => api.get(`/api/employee-timesheets`,ProfileId);
   // ignite-jhipster-api-method-needle
 
   // ------
@@ -149,6 +151,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
 
 
     getProfile,
+    getEmployeeTimesheet,
 
     // ignite-jhipster-api-export-needle
     setAuthToken,

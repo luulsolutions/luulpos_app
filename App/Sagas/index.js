@@ -16,6 +16,8 @@ import { ProductTypes } from '../Redux/ProductRedux'
 import { ProductCategoryTypes } from '../Redux/ProductCategoryRedux'
 import { ProductVariantTypes } from '../Redux/ProductVariantRedux'
 import { ProfileTypes } from '../Redux/ProfileRedux'
+
+import { EmployeTypes } from '../Redux/checkRedux'
 // ignite-jhipster-saga-redux-import-needle
 
 /* ------------- Sagas ------------- */
@@ -52,6 +54,7 @@ import {
 } from './ProductVariantSagas'
 import { pinSave, pinCheck, pinCheckByUsername } from './PinSagas'
 import { dbProfile, apiProfile, storeDbProfile } from './ProfileSagas'
+import {employeTimesheet} from './checksSagas';
 // ignite-jhipster-saga-method-import-needle
 
 /* ------------- API ------------- */
@@ -108,6 +111,9 @@ export default function* root() {
 		takeLatest(ProfileTypes.FULL_PROFILE_API_REQUEST, apiProfile, api),
 		takeLatest(ProfileTypes.FULL_PROFILE_STORE_DB_REQUEST, storeDbProfile, api),
 		// ignite-jhipster-saga-redux-connect-needle
+		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_REQUEST, employeTimesheet, api),
+		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_SUCCESS, employeTimesheet, api),
+		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_FAILURE, employeTimesheet, api),
 
 		takeLatest(AccountTypes.ACCOUNT_REQUEST, getAccount, api),
 		takeLatest(AccountTypes.ACCOUNT_UPDATE_REQUEST, updateAccount, api),
