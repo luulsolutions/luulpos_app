@@ -12,8 +12,8 @@ export const reducers = combineReducers({
   products: require('./ProductRedux').reducer,
   productCategories: require('./ProductCategoryRedux').reducer,
   productVariants: require('./ProductVariantRedux').reducer,
+  employeeTimesheets: require('./EmployeeTimesheetRedux').reducer,
   profiles: require('./ProfileRedux').reducer,
-  checks: require('./checkRedux').reducer,
   // ignite-jhipster-redux-store-import-needle
   account: require('./AccountRedux').reducer,
   login: require('./LoginRedux').reducer,

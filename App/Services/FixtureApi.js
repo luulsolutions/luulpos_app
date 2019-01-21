@@ -83,6 +83,26 @@ export default {
     data: require('../Fixtures/searchProductVariants.json'),
   }),
 
+  updateEmployeeTimeSheet: employeeTimeSheet => ({
+    ok: true,
+    data: require('../Fixtures/updateEmployeeTimeSheet.json'),
+  }),
+  getEmployeeTimeSheets: () => ({
+    ok: true,
+    data: require('../Fixtures/getEmployeeTimeSheets.json'),
+  }),
+  getEmployeeTimeSheet: employeeTimeSheetId => ({
+    ok: true,
+    data: require('../Fixtures/getEmployeeTimeSheet.json'),
+  }),
+  deleteEmployeeTimeSheet: employeeTimeSheetId => ({
+    ok: true,
+  }),
+  searchEmployeeTimeSheets: query => ({
+    ok: true,
+    data: require('../Fixtures/searchEmployeeTimeSheets.json'),
+  }),
+
   updateProfile: (profile) => {
     return {
       ok: true,
@@ -110,12 +130,6 @@ export default {
     return {
       ok: true,
       data: require('../Fixtures/searchProfiles.json')
-    }
-  },
-  getEmployeTimeSheet: (profileId) => {
-    return {
-      ok: true,
-      data: require('../Fixtures/getEmployeTimeSheet.json')
     }
   },
   // ignite-jhipster-api-fixture-needle

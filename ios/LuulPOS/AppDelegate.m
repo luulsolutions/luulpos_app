@@ -9,7 +9,7 @@
 #import <React/RCTLinkingManager.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
+#import <ReactNativeNavigation.h>
 @import iZettleSDK;
 
 @implementation AppDelegate

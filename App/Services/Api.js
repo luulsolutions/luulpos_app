@@ -100,7 +100,15 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const searchProductVariants = query => api.get('api/_search/product-variants', { query });
 
   const getProfile = (email) => api.get('/api/profile-full-by-email/' + email);
-  const getEmployeeTimesheet = ProfileId => api.get(`/api/employee-timesheets`,ProfileId);
+
+  const getEmployeeTimesheet = employeeTimesheetId => api.get(`api/employee-timesheets/${employeeTimesheetId}`);
+  const getEmployeeTimesheets = options => api.get('api/employee-timesheets', options);
+  const createEmployeeTimesheet = employeeTimesheet => api.post('api/employee-timesheets', employeeTimesheet);
+  const updateEmployeeTimesheet = employeeTimesheet => api.put('api/employee-timesheets', employeeTimesheet);
+  const deleteEmployeeTimesheet = employeeTimesheetId => api.delete(`api/employee-timesheets/${employeeTimesheetId}`);
+  const searchEmployeeTimesheets = query => api.get('api/_search/employee-timesheets', { query });
+
+
   // ignite-jhipster-api-method-needle
 
   // ------
@@ -151,7 +159,14 @@ const create = (baseURL = AppConfig.apiUrl) => {
 
 
     getProfile,
+
+    createEmployeeTimesheet,
+    updateEmployeeTimesheet,
+    getEmployeeTimesheets,
     getEmployeeTimesheet,
+    deleteEmployeeTimesheet,
+    searchEmployeeTimesheets,
+
 
     // ignite-jhipster-api-export-needle
     setAuthToken,

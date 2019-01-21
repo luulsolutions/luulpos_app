@@ -15,6 +15,7 @@ import { OrderTypes } from '../Redux/OrderRedux'
 import { ProductTypes } from '../Redux/ProductRedux'
 import { ProductCategoryTypes } from '../Redux/ProductCategoryRedux'
 import { ProductVariantTypes } from '../Redux/ProductVariantRedux'
+import { EmployeeTimesheetTypes } from '../Redux/EmployeeTimesheetRedux'
 import { ProfileTypes } from '../Redux/ProfileRedux'
 
 import { EmployeTypes } from '../Redux/checkRedux'
@@ -52,9 +53,16 @@ import {
 	deleteProductVariant,
 	searchProductVariants
 } from './ProductVariantSagas'
+import {
+	getEmployeeTimesheet,
+	getEmployeeTimesheets,
+	updateEmployeeTimesheet,
+	deleteEmployeeTimesheet,
+	searchEmployeeTimesheets
+} from './EmployeeTimesheetSagas'
 import { pinSave, pinCheck, pinCheckByUsername } from './PinSagas'
 import { dbProfile, apiProfile, storeDbProfile } from './ProfileSagas'
-import {employeTimesheet} from './checksSagas';
+
 // ignite-jhipster-saga-method-import-needle
 
 /* ------------- API ------------- */
@@ -106,6 +114,12 @@ export default function* root() {
 		takeLatest(ProductVariantTypes.PRODUCT_VARIANT_UPDATE_REQUEST, updateProductVariant, api),
 		takeLatest(ProductVariantTypes.PRODUCT_VARIANT_DELETE_REQUEST, deleteProductVariant, api),
 		takeLatest(ProductVariantTypes.PRODUCT_VARIANT_SEARCH_REQUEST, searchProductVariants, api),
+
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_REQUEST, getEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_ALL_REQUEST, getEmployeeTimesheets, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_UPDATE_REQUEST, updateEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_DELETE_REQUEST, deleteEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_SEARCH_REQUEST, searchEmployeeTimesheets, api),
 
 		takeLatest(ProfileTypes.FULL_PROFILE_DB_REQUEST, dbProfile, api),
 		takeLatest(ProfileTypes.FULL_PROFILE_API_REQUEST, apiProfile, api),
