@@ -7,18 +7,22 @@ const { Types, Creators } = createActions({
   employeeTimesheetRequest: ['employeeTimesheetId'],
   employeeTimesheetAllRequest: ['options'],
   employeeTimesheetUpdateRequest: ['employeeTimesheet'],
+  employeeTimesheetCreate: ['employeeTimesheet'],
   employeeTimesheetSearchRequest: ['query'],
   employeeTimesheetDeleteRequest: ['employeeTimesheetId'],
 
   employeeTimesheetSuccess: ['employeeTimesheet'],
   employeeTimesheetAllSuccess: ['employeeTimesheets'],
   employeeTimesheetUpdateSuccess: ['employeeTimesheet'],
+  employeeTimesheetCreateSuccess: ['employeeTimesheet'],
+
   employeeTimesheetSearchSuccess: ['employeeTimesheets'],
   employeeTimesheetDeleteSuccess: [],
 
   employeeTimesheetFailure: ['error'],
   employeeTimesheetAllFailure: ['error'],
   employeeTimesheetUpdateFailure: ['error'],
+  employeeTimesheetCreateFailure: ['error'],
   employeeTimesheetSearchFailure: ['error'],
   employeeTimesheetDeleteFailure: ['error'],
 });
@@ -36,6 +40,7 @@ export const INITIAL_STATE = Immutable({
   deleting: null,
   employeeTimesheet: null,
   employeeTimesheets: null,
+  creatingEmployeeTimesheet:null,
   errorOne: null,
   errorAll: null,
   errorUpdating: null,
@@ -64,6 +69,11 @@ export const updateRequest = state =>
   state.merge({
     updating: true,
   });
+
+  export const employeeTimesheet = (state)=>
+  state.merge({
+    creatingEmployeeTimesheet: true
+  })
 // request to search from an api
 export const searchRequest = state =>
   state.merge({
@@ -90,7 +100,7 @@ export const allSuccess = (state, action) => {
   return state.merge({
     fetchingAll: false,
     errorAll: null,
-    employeeTimesheets,
+    employeeTimesheets:employeeTimesheets,
   });
 };
 // successful api update
@@ -102,6 +112,18 @@ export const updateSuccess = (state, action) => {
     employeeTimesheet,
   });
 };
+
+export const employeeTimesheetCreateSuccess = (state,acton)=>{
+  const { employeeTimesheet} = action
+  return state.merge({
+    creatingEmployeeTimesheet: false,
+    errorOne:null,
+    employeeTimesheet
+  })
+}
+
+
+
 // successful api search
 export const searchSuccess = (state, action) => {
   const { employeeTimesheets } = action;
@@ -136,6 +158,17 @@ export const allFailure = (state, action) => {
     employeeTimesheets: null,
   });
 };
+
+export const employeeTimesheetCreateFailure = (state, action) =>{
+    const {error} = action
+    return state.merge({
+      creatingEmployeeTimesheet:false,
+      error,
+      employeeTimesheet:null
+    })
+
+
+}
 // Something went wrong updating.
 export const updateFailure = (state, action) => {
   const { error } = action;
@@ -170,18 +203,21 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.EMPLOYEE_TIMESHEET_REQUEST]: request,
   [Types.EMPLOYEE_TIMESHEET_ALL_REQUEST]: allRequest,
   [Types.EMPLOYEE_TIMESHEET_UPDATE_REQUEST]: updateRequest,
+  [Types.EMPLOYEE_TIMESHEET_CREATE]:employeeTimesheet,
   [Types.EMPLOYEE_TIMESHEET_SEARCH_REQUEST]: searchRequest,
   [Types.EMPLOYEE_TIMESHEET_DELETE_REQUEST]: deleteRequest,
 
   [Types.EMPLOYEE_TIMESHEET_SUCCESS]: success,
   [Types.EMPLOYEE_TIMESHEET_ALL_SUCCESS]: allSuccess,
   [Types.EMPLOYEE_TIMESHEET_UPDATE_SUCCESS]: updateSuccess,
+  [Types.EMPLOYEE_TIMESHEET_CREATE_SUCCESS]:employeeTimesheetCreateSuccess,
   [Types.EMPLOYEE_TIMESHEET_SEARCH_SUCCESS]: searchSuccess,
   [Types.EMPLOYEE_TIMESHEET_DELETE_SUCCESS]: deleteSuccess,
 
   [Types.EMPLOYEE_TIMESHEET_FAILURE]: failure,
   [Types.EMPLOYEE_TIMESHEET_ALL_FAILURE]: allFailure,
   [Types.EMPLOYEE_TIMESHEET_UPDATE_FAILURE]: updateFailure,
+  [Types.EMPLOYEE_TIMESHEET_CREATE_FAILURE]: employeeTimesheetCreateFailure,
   [Types.EMPLOYEE_TIMESHEET_SEARCH_FAILURE]: searchFailure,
   [Types.EMPLOYEE_TIMESHEET_DELETE_FAILURE]: deleteFailure,
 });

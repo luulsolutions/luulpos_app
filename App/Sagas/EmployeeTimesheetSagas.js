@@ -10,9 +10,26 @@ export function* getEmployeeTimesheet(api, action) {
 
   // success?
   if (response.ok) {
+    console.tron.log(response.data)
     yield put(EmployeeTimesheetActions.employeeTimesheetSuccess(response.data));
   } else {
     yield put(EmployeeTimesheetActions.employeeTimesheetFailure(response.data));
+  }
+}
+
+
+export function* createEmployeeTimesheet(api, action) {
+  const { employeeTimesheet } = action;
+  // make the call to the api
+  console.tron.log("done",employeeTimesheet)
+  const apiCall = call(api.createEmployeeTimesheet, employeeTimesheet);
+  const response = yield call(callApi, apiCall);
+
+  if (response.ok) {
+    console.tron.log(employeeTimesheet)
+    yield put(EmployeeTimesheetActions.employeeTimesheetAllSuccess(response.data));
+  } else {
+    yield put(EmployeeTimesheetActions.employeeTimesheetAllFailure(response.data));
   }
 }
 

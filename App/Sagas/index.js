@@ -18,7 +18,6 @@ import { ProductVariantTypes } from '../Redux/ProductVariantRedux'
 import { EmployeeTimesheetTypes } from '../Redux/EmployeeTimesheetRedux'
 import { ProfileTypes } from '../Redux/ProfileRedux'
 
-import { EmployeTypes } from '../Redux/checkRedux'
 // ignite-jhipster-saga-redux-import-needle
 
 /* ------------- Sagas ------------- */
@@ -55,6 +54,7 @@ import {
 } from './ProductVariantSagas'
 import {
 	getEmployeeTimesheet,
+	createEmployeeTimesheet,
 	getEmployeeTimesheets,
 	updateEmployeeTimesheet,
 	deleteEmployeeTimesheet,
@@ -116,6 +116,7 @@ export default function* root() {
 		takeLatest(ProductVariantTypes.PRODUCT_VARIANT_SEARCH_REQUEST, searchProductVariants, api),
 
 		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_REQUEST, getEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_CREATE, createEmployeeTimesheet, api),
 		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_ALL_REQUEST, getEmployeeTimesheets, api),
 		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_UPDATE_REQUEST, updateEmployeeTimesheet, api),
 		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_DELETE_REQUEST, deleteEmployeeTimesheet, api),
@@ -125,9 +126,11 @@ export default function* root() {
 		takeLatest(ProfileTypes.FULL_PROFILE_API_REQUEST, apiProfile, api),
 		takeLatest(ProfileTypes.FULL_PROFILE_STORE_DB_REQUEST, storeDbProfile, api),
 		// ignite-jhipster-saga-redux-connect-needle
-		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_REQUEST, employeTimesheet, api),
-		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_SUCCESS, employeTimesheet, api),
-		takeLatest(EmployeTypes.EMPLOYE_TIMESHEET_FAILURE, employeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_REQUEST, getEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_SUCCESS, getEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_CREATE_SUCCESS, createEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_CREATE_FAILURE, createEmployeeTimesheet, api),
+		takeLatest(EmployeeTimesheetTypes.EMPLOYEE_TIMESHEET_FAILURE, getEmployeeTimesheet, api),
 
 		takeLatest(AccountTypes.ACCOUNT_REQUEST, getAccount, api),
 		takeLatest(AccountTypes.ACCOUNT_UPDATE_REQUEST, updateAccount, api),

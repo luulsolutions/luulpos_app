@@ -85,22 +85,22 @@ export default {
 
   updateEmployeeTimeSheet: employeeTimeSheet => ({
     ok: true,
-    data: require('../Fixtures/updateEmployeeTimeSheet.json'),
+    data: require('../Fixtures/updateEmployeeTimesheet.json'),
   }),
   getEmployeeTimeSheets: () => ({
     ok: true,
-    data: require('../Fixtures/getEmployeeTimeSheets.json'),
+    data: require('../Fixtures/getEmployeeTimesheet.json'),
   }),
   getEmployeeTimeSheet: employeeTimeSheetId => ({
     ok: true,
-    data: require('../Fixtures/getEmployeeTimeSheet.json'),
+    data: require('../Fixtures/getEmployeeTimesheet.json'),
   }),
   deleteEmployeeTimeSheet: employeeTimeSheetId => ({
     ok: true,
   }),
   searchEmployeeTimeSheets: query => ({
     ok: true,
-    data: require('../Fixtures/searchEmployeeTimeSheets.json'),
+    data: require('../Fixtures/searchEmployeeTimesheets.json'),
   }),
 
   updateProfile: (profile) => {

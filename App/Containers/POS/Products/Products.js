@@ -139,6 +139,7 @@ class Product extends React.PureComponent {
 			if (this.props.fullProfile) {
 				const shopId = this.props.fullProfile.profileDTO.shopId
 				this.fetchAllProductsById(shopId)
+				
 			}
 		}
 	}
@@ -147,7 +148,7 @@ class Product extends React.PureComponent {
 		if (this.state.true) {
 			return <LoadingProducts />
 		}
-		return (
+ 		return (
 			<ScrollView style={styles.container}>
 				<GridView
 					style={styles.gridView}

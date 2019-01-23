@@ -36,7 +36,7 @@
       "prettier": "prettier './App/**/*.js'",
       "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
       "postinstall": "node xcode_10_setup.js",
-      "crl": "cp -r ../realm-ios ./node_modules/realm/vendor",
+       "crl": "cp -r ../realm-ios ./node_modules/realm/vendor",
       "debug": "open rndebugger://set-debugger-loc?host=localhost&port=19001"
    },
    "dependencies": {
@@ -118,6 +118,7 @@
       "reactotron-redux": "2.1.0",
       "reactotron-redux-saga": "2.1.0",
       "redux-devtools-extension": "^2.13.5",
+      "remotedev-rn-debugger": "^0.8.3",
       "rimraf": "2.6.2",
       "snazzy": "8.0.0",
       "standard": "10.0.2"
