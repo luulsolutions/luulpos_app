@@ -22,11 +22,17 @@ import { Colors } from '../../../Themes';
     employeeTimesheet: [],
     employeeTimesheets:[],
     dataSource: [],
+    fullProfile:[],
     checkin:'',
      
 
   }
+  componentWillReceiveProps(newProps) {
+		const array = newProps.fullProfile.profileDTO  
+    this.setState({ fullProfile: array })
+ 	}
    
+
   componentDidMount(){
     this.props.employeeTimesheetAllRequest()
     const array = this.props.employeeTimesheets;
@@ -40,13 +46,10 @@ import { Colors } from '../../../Themes';
      const employeeTimesheet = {
       checkinTime:this.state.checkin,
       checkOutTime:new Date(),
-      regularHoursWorked:null,
-      overTimeHoursWorked:null,
-      pay:null,
-      profileId:null,
-      profileFirstName:null,
-      shopId:null,
-      shopShopName:null,
+      profileId:this.state.fullProfile.id,
+      profileFirstName:this.state.fullProfile.firstName,
+      shopId:this.state.fullProfile.shopId,
+      shopShopName:this.state.fullProfile.shopShopName,
      }
      this.props.employeeTimesheetCreate(employeeTimesheet)
    }
@@ -56,7 +59,7 @@ import { Colors } from '../../../Themes';
 
   render() {
      
-    console.tron.log('kkkk', this.state.dataSource)
+    console.tron.log('kkkk', this.props.fullProfile)
      return (
       <Container>
         <Content>
@@ -102,7 +105,7 @@ import { Colors } from '../../../Themes';
 
 const mapStateToProps = (state) => ({
   
-    
+    fullProfile: state.profiles.fullProfile,
     employeeTimesheet: state.employeeTimesheet,
     employeeTimesheets: state.employeeTimesheets
   
