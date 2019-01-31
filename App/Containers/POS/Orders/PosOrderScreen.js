@@ -199,7 +199,7 @@ class PosOrderScreen extends React.PureComponent {
 						<Icons name="plus" size={23} color={colors.white} />
 						<Text style={styles.summeryButtonTextHold}>Hold</Text>
 					</Button>
-					<Button onPress={() => 	goPaymentsScreen()} style={styles.summerButtonPay}>
+					<Button onPress={() => 	goPaymentsScreen(this.state.order)} style={styles.summerButtonPay}>
 						<Icon name="payment"  type="MaterialIcons" size={23} color={colors.white} />
 						<Text style={styles.summeryButtonTextPay}>Card</Text>
 					</Button>

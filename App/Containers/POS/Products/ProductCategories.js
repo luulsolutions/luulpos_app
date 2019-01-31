@@ -30,6 +30,7 @@ class ProductCategory extends React.PureComponent {
 
 	//  Render data as gridView
 	_renderCategory(item) {
+		
 		return (
 			<View style={styles.itemContainer}>
 				<ProductCategoryItem food={item} onPress={() => this.fetchAllProductByCategoryId(item.id)} />
@@ -74,7 +75,7 @@ class ProductCategory extends React.PureComponent {
 		this.setState({ dataObjects: array })
 	}
 	render() {
-		if (this.props.fetching) {
+ 		if (this.props.fetching) {
 			return <LoadingProducts />
 		}
 		return (

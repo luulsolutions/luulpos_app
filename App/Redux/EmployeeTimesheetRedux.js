@@ -39,7 +39,7 @@ export const INITIAL_STATE = Immutable({
   searching: null,
   deleting: null,
   employeeTimesheet: null,
-  employeeTimesheets: null,
+  employeeTimesheets: '',
   creatingEmployeeTimesheet:null,
   errorOne: null,
   errorAll: null,

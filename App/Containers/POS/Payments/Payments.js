@@ -8,15 +8,22 @@ import {Calculator} from 'react-native-pos-calculator'
 class Payments extends React.PureComponent {
 	constructor(props) {
 		super(props)
-		Navigation.events().bindComponent(this)
+		console.tron.log('yuuuu',this.props.order)
+
 	}
 	state = {
 		status: 'info',
+		customerOrders:[],
+		fullProfile:[]
 	}
+
+
 	
 	render() {
+		console.tron.log("funtastic", this.state.fullProfile);
+		
 		return (
-			<View style={{ flex: 1 }}>
+		<View style={{ flex: 1 }}>
 			<Calculator style={{ flex: 1 }} />
 		  </View>
 		)
@@ -25,6 +32,8 @@ class Payments extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
 	fullProfile: state.profiles.fullProfile,
+	customerOrders: state.orders,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({

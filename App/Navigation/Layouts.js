@@ -326,13 +326,16 @@ export const goProductPOSOrderScreen = (product) =>
       }
    });
 
-export const goPaymentsScreen = (product) =>
+export const goPaymentsScreen = (order) =>
    Navigation.showModal({
      stack: {
         children: [
            {
              component: {
                  name: PAYMENTS,
+                 passProps: {
+                  order
+                   },
                  options: {
                     topBar: {
                        visible: false,

@@ -10,7 +10,7 @@ export function* getEmployeeTimesheet(api, action) {
 
   // success?
   if (response.ok) {
-    console.tron.log(response.data)
+    console.tron.log("result of success",response.data)
     yield put(EmployeeTimesheetActions.employeeTimesheetSuccess(response.data));
   } else {
     yield put(EmployeeTimesheetActions.employeeTimesheetFailure(response.data));
