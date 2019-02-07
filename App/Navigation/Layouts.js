@@ -256,6 +256,7 @@ export const checksScreen = () =>
          }
       }
    });
+   
 
 export const AuthLoad = {
   root: {
@@ -326,28 +327,33 @@ export const goProductPOSOrderScreen = (product) =>
       }
    });
 
-export const goPaymentsScreen = (product) =>
-   Navigation.showModal({
-     stack: {
-        children: [
-           {
-             component: {
-                 name: PAYMENTS,
-                 options: {
-                    topBar: {
-                       visible: false,
-                       drawBehind: true
-                     },
-                    modalPresentationStyle: 'pageSheet',
-                    layout: {
-                       orientation: ['portrait', 'landscape'] // An array of supported orientations
-                     }
-                  }
-               }
-           }
-         ]
-      }
-   });
+export const goPaymentsScreen = (order) =>
+ Navigation.setRoot({
+   root: {
+      stack: {
+         children: [
+            {
+              component: {
+                  name: PAYMENTS,
+                  passProps: {
+                     order
+                   },
+                  options: {
+                     topBar: {
+                        visible: false,
+                        drawBehind: true
+                      },
+                     modalPresentationStyle: 'pageSheet',
+                     layout: {
+                        orientation: ['portrait'] // An array of supported orientations
+                      }
+                   }
+                }
+            }
+          ]
+       }
+    }
+ });
 
 export const goToPinScreen = (user) =>
    Navigation.setRoot({

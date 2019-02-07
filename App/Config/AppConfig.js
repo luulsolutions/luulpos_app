@@ -2,6 +2,6 @@
 
 
 export default {
-  apiUrl: 'https://somaliapp.com:8080',
+  apiUrl: 'http://localhost:8080/',
   appUrlScheme: 'easypos',
 };

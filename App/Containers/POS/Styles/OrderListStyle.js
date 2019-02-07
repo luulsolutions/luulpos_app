@@ -12,8 +12,9 @@ export default StyleSheet.create({
 	row: {
 		flex: 1,
 		justifyContent: 'space-between',
-		borderBottomWidth: 1,
-		borderColor: Colors.blacktext
+		borderBottomWidth: 0.25,
+		borderColor: Colors.blacktext,
+		padding:3
 		 
 	},
 	colName: {
@@ -35,31 +36,33 @@ export default StyleSheet.create({
 	colActions: {
 		flex: 2,
 		flexDirection: 'column',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
 	},
 
 	boldLabel: {
-		fontSize:16,
+		fontSize:13,
 		fontFamily:'Roboto-Regular',
 		alignSelf: 'center',
-		color: Colors.title,
+		color: Colors.darkblue,
 		textAlign: 'center',
-		marginBottom: Metrics.smallMargin
+		marginBottom: Metrics.smallMargin,
+		
   },
   headerContainer:{
 			 flex:1,
 			 justifyContent:'center'
   },
   headerTitle:{
-     justifyContent:'space-between',
+	 justifyContent:'space-between',
+	 marginTop:-10,
 	 marginBottom:30,
 	 flexDirection:'row',
 	},
 	headerTitleText:{
 	alignSelf:'center',
-	fontSize:15,
-	color:Colors.blacktext,
-	fontFamily:"Roboto-Regular"
+	fontSize:11,
+	color:Colors.darkblue,
+	fontFamily:"Roboto-light"
 	 },
 	headRow: {
 		flex: 1,
@@ -68,8 +71,10 @@ export default StyleSheet.create({
 	},
 	label: {
 		textAlign: 'center',
-		color: Colors.primary,
-		fontFamily:'Roboto-Regular'
+		color: Colors.lightdarkblue,
+		fontFamily:'Roboto-light',
+		fontSize:11,
+
 
 	},
 	listContent: {
@@ -110,45 +115,58 @@ export default StyleSheet.create({
 	},
 	summerButtonHold: {
     margin: 10,
-    width:110,
-    justifyContent:'center',
+    flex:1,
+	justifyContent:'center',
     backgroundColor: Colors.darkgreen,
    
   },
+  summerButtonNote: {
+    margin: 10,
+    flex:1,
+    justifyContent:'center',
+    backgroundColor: Colors.white,
+    borderColor:Colors.primary,
+    borderWidth:1,
+  },
   summerButtonCancel: {
     margin: 10,
-    width:110,
-  justifyContent:'center',
+    flex:1,
+    justifyContent:'center',
     backgroundColor: Colors.white,
-    borderBottomColor:Colors.primary,
+    borderColor:Colors.secondary,
     borderWidth:1,
   },
   summerButtonPay: {
     margin: 10,
-    width:110,
+    flex:1,
     justifyContent:'center',
-		backgroundColor: Colors.primary
-  },
+	backgroundColor: Colors.primary,
+   },
   summeryButtonText:{
-		fontSize:20,
+		fontSize:15,
 		color:Colors.darkgreen
   },
   summeryText:{
-		fontSize:20,
+		fontSize:12,
 		color:Colors.blacktext
   },
   summeryPrice:{
-     fontSize:25,
-	 fontFamily:'Roboto-Thin',
-	 fontWeight:'bold'
-	 
+     fontSize:17,
+	 fontFamily:'Roboto-Medium',
+ 	 
   },
   summeryButtonTextPay:{
-    fontSize:20,
-    color:Colors.text
+    fontSize:15,
+	color:Colors.text,
+	marginLeft:10
+	
   },
 	summeryButtonTextHold:{
-    fontSize:20,
+    fontSize:15,
     color:Colors.white
+  },
+  summeryButtonTextNote:{
+    fontSize:15,
+    color:Colors.primary
   }
 })

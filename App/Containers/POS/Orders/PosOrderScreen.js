@@ -6,7 +6,7 @@ import OrderActions from '../../../Redux/OrderRedux'
 import styles from '../Styles/OrderListStyle'
 import AlertMessage from '../../../Components/AlertMessage'
 import { Icon } from 'react-native-elements'
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icons from 'react-native-vector-icons/Feather'
 import { isPhone } from 'react-native-device-detection'
 import _ from 'lodash'
 import { Colors } from '../../../Themes'
@@ -91,17 +91,17 @@ class PosOrderScreen extends React.PureComponent {
 				<Col style={styles.colActions}>
 					<Icon
 						onPress={() => console.tron.log('addPressed')}
-						size={30}
+						size={20}
 						name="ios-add-circle-outline"
 						type="ionicon"
-						color={Colors.darkgreen}
+						color={Colors.primary}
 					/>
 					<Icon
 						onPress={() => console.tron.log('removePressed')}
-						size={30}
+						size={20}
 						name="ios-remove-circle-outline"
 						type="ionicon"
-						color={Colors.darkgreen}
+						color={Colors.primary}
 					/>
 				</Col>
 			</Row>
@@ -113,17 +113,18 @@ class PosOrderScreen extends React.PureComponent {
 			<View style={styles.headerContainer}>
 				<View style={styles.headerTitle}>
 					<Text style={styles.headerTitleText}>
-						<Icons name="calculator" size={22} color={colors.violet} />
+						<Icons name="tag" size={17} color={colors.lightGrey} />
 						Table#: {this.state.order ? this.state.order.orderDTO.sectionTableTableNumber : null}
 						{'\n'}
-						<Icons name="account" size={22} color={colors.violet} />
+						<Icons name="user" size={18} color={colors.lightGrey} />
 						Cus Name#: {this.state.order ? this.state.order.orderDTO.customerName : null}
 						{'\n'}
 					</Text>
-					<Text style={styles.headerTitleText}>
-						<Icons name="check" size={22} color={colors.violet} />
+					<Text style={[{marginTop:-15},styles.headerTitleText]}>
+						<Icons name="check" size={18} color={colors.lightGrey} />
 						Section: {this.state.order ? this.state.order.orderDTO.shopSectionName : null} {'\n'}
-						<Icons name="credit-card" size={22} color={colors.violet} />
+						
+						<Icons name="dollar-sign" size={18} color={colors.lightGrey} />
 						Surcharge: {this.state.order ? this.state.order.orderDTO.surchargePercentage : 0}%
 					</Text>
 				</View>
@@ -191,22 +192,27 @@ class PosOrderScreen extends React.PureComponent {
 					</Col>
 				</Row>
 				<View style={styles.summerButtonsContainer}>
-					<Button onPress={() => this._deleteOrders(1)} style={styles.summerButtonCancel}>
-						<Icons name="close" size={23} color={colors.darkgreen} />
-						<Text style={styles.summeryButtonText}>Cancel</Text>
+			     	<Button onPress={() => 	goPaymentsScreen(this.props.customerOrders)} style={styles.summerButtonPay}>
+						<Icons name="credit-card" size={18} color={colors.white} />
+						<Text style={styles.summeryButtonTextPay}>Payment</Text>
+					</Button>
+				</View>
+				<View style={[{}, styles.summerButtonsContainer]}>
+				   <Button onPress={() => this._deleteOrders(1)} style={styles.summerButtonNote}>
+						<Icons name="tag" size={18} color={colors.primary} />
+						<Text style={styles.summeryButtonTextNote}>Add Note</Text>
 					</Button>
 					<Button onPress={() => this._deleteOrders(1)} style={styles.summerButtonHold}>
-						<Icons name="plus" size={23} color={colors.white} />
-						<Text style={styles.summeryButtonTextHold}>Hold</Text>
+						<Icons name="plus" size={18} color={colors.white} />
+						<Text style={styles.summeryButtonTextHold}>Save</Text>
 					</Button>
-					<Button onPress={() => 	goPaymentsScreen()} style={styles.summerButtonPay}>
-						<Icon name="payment"  type="MaterialIcons" size={23} color={colors.white} />
-						<Text style={styles.summeryButtonTextPay}>Card</Text>
+					<Button onPress={() => this._deleteOrders(1)} style={styles.summerButtonCancel}>
+						<Icons name="x" size={18} color={colors.darkgreen} />
+						<Text style={styles.summeryButtonText}>Cancel</Text>
 					</Button>
-					<Button onPress={() => 	goPaymentsScreen()} style={styles.summerButtonPay}>
-						<Icon name="payment"  type="MaterialIcons" size={23} color={colors.white} />
-						<Text style={styles.summeryButtonTextPay}>Cash</Text>
-					</Button>
+					
+				
+					 
 				</View>
 			</View>
 		)

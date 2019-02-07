@@ -2,6 +2,22 @@ import { call, put } from 'redux-saga/effects';
 import OrderActions from '../Redux/OrderRedux';
 import { callApi } from './CallApiSaga';
 
+
+export function* createOrder(api, action) {
+  const { Orders } = action;
+  // make the call to the api
+  console.tron.log("done",Orders)
+  const apiCall = call(api.createFullOrder, Orders);
+  const response = yield call(callApi, apiCall);
+
+  if (response.ok) {
+    console.tron.log(Orders)
+    yield put(OrderActions.customerOrderCreateSuccess(response.data));
+  } else {
+    yield put(OrderActions.customerOrderCreateFailure(response.data));
+  }
+}
+
 export function* getOrder(api, action) {
   const { orderId } = action;
   // make the call to the api

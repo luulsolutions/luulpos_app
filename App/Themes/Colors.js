@@ -1,6 +1,6 @@
 const colors = {
   background: '#eeeeee',
-  primary: '#0277BD',
+  primary: '#3657ff',
   primaryTransparent:'rgba(2, 120, 189, 0.938)',
   secondary: '#00E676',
   secondaryTransparency:'rgba(0, 230, 119, 0.801)',
@@ -46,7 +46,8 @@ const colors = {
   blacktext:'#7d7d7d',
   
   slateGrey: '#2F4F4F',
-  darkblue: '#01579B',
+  darkblue: '#0E1F35',
+  lightdarkblue: '#162942',
   darkgreen:'#00C853',
   violet:'#FF4081'
 

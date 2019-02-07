@@ -8,6 +8,7 @@ const { Types, Creators } = createActions({
 	orderAllRequest: [ 'options' ],
 	customerOrderAllRequest: [ 'options' ],
 	customerOrderSave: [ 'customerOrders' ],
+	customerOrderCreate:['Orders'],
 	orderUpdateRequest: [ 'order' ],
 	orderSearchRequest: [ 'query' ],
 	orderDeleteRequest: [ 'orderId' ],
@@ -16,6 +17,7 @@ const { Types, Creators } = createActions({
 	orderAllSuccess: [ 'orders' ],
 	customerOrderAllSuccess: [ 'customerOrders' ],
 	customerOrderSaveSuccess: [ 'customerOrderSave' ],
+	customerOrderCreateSuccess:['order'],
 	orderUpdateSuccess: [ 'order' ],
 	orderSearchSuccess: [ 'orders' ],
 	orderDeleteSuccess: [],
@@ -25,6 +27,7 @@ const { Types, Creators } = createActions({
 	orderUpdateFailure: [ 'error' ],
 	customerOrderAllFailure: [ 'error' ],
 	customerOrderSaveFailure: [ 'error' ],
+	customerOrderCreateFailure:['order'],
 	orderSearchFailure: [ 'error' ],
 	orderDeleteFailure: [ 'error' ]
 })
@@ -80,6 +83,10 @@ export const customerSaveRequest = (state) =>
 	state.merge({
 		savingCustomerOrder: true
 	})
+export const customerOrderCreate = (state) =>
+      state.merge({
+		fetchingAllCustomerOrders: true,
+ 	  })
 
 // request to update from an api
 export const updateRequest = (state) =>
@@ -145,6 +152,14 @@ export const customerSaveSuccess = (state, action) => {
 		})
 	}
 }
+export const customerOrderCreateSuccess = (state, action) =>{
+	const {customerOrders} = action
+	return state.merge({
+		fetchingAllCustomerOrders: false,
+		customerOrders
+		
+	})
+}
 // successful api update
 export const updateSuccess = (state, action) => {
 	const { order } = action
@@ -176,6 +191,14 @@ export const failure = (state, action) => {
 	const { error } = action
 	return state.merge({
 		fetchingOne: false,
+		errorOne: error,
+		order: null
+	})
+}
+export const customerOrderCreateFailure = (state, action) => {
+	const { error } = action
+	return state.merge({
+		fetchingAllCustomerOrders: false,
 		errorOne: error,
 		order: null
 	})
@@ -240,6 +263,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 	[Types.ORDER_ALL_REQUEST]: allRequest,
 	[Types.CUSTOMER_ORDER_ALL_REQUEST]: customerAllRequest,
 	[Types.CUSTOMER_ORDER_SAVE]: customerSaveRequest,
+	[Types.CUSTOMER_ORDER_CREATE]: customerOrderCreate,
 	[Types.ORDER_UPDATE_REQUEST]: updateRequest,
 	[Types.ORDER_SEARCH_REQUEST]: searchRequest,
 	[Types.ORDER_DELETE_REQUEST]: deleteRequest,
@@ -248,6 +272,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 	[Types.ORDER_ALL_SUCCESS]: allSuccess,
 	[Types.CUSTOMER_ORDER_ALL_SUCCESS]: customerAllSuccess,
 	[Types.CUSTOMER_ORDER_SAVE_SUCCESS]: customerSaveSuccess,
+	[Types.CUSTOMER_ORDER_CREATE_SUCCESS]: customerOrderCreateSuccess,
 	[Types.ORDER_UPDATE_SUCCESS]: updateSuccess,
 	[Types.ORDER_SEARCH_SUCCESS]: searchSuccess,
 	[Types.ORDER_DELETE_SUCCESS]: deleteSuccess,
@@ -256,6 +281,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 	[Types.ORDER_ALL_FAILURE]: allFailure,
 	[Types.CUSTOMER_ORDER_ALL_FAILURE]: customerAllFailure,
 	[Types.CUSTOMER_ORDER_SAVE_FAILURE]: customerSaveFailure,
+	[Types.CUSTOMER_ORDER_CREATE_FAILURE]: customerOrderCreateFailure,
 	[Types.ORDER_UPDATE_FAILURE]: updateFailure,
 	[Types.ORDER_SEARCH_FAILURE]: searchFailure,
 	[Types.ORDER_DELETE_FAILURE]: deleteFailure

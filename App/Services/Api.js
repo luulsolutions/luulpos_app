@@ -70,6 +70,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
   const getOrder = orderId => api.get(`api/orders/${orderId}`);
   const getOrders = options => api.get('api/orders', options);
   const createOrder = order => api.post('api/orders', order);
+  const createFullOrder = order => api.post('api/orders-full', order);
   const updateOrder = order => api.put('api/orders', order);
   const deleteOrder = orderId => api.delete(`api/orders/${orderId}`);
   const searchOrders = query => api.get('api/_search/orders', { query });
@@ -132,6 +133,7 @@ const create = (baseURL = AppConfig.apiUrl) => {
     deleteUser,
 
     createOrder,
+    createFullOrder,
     updateOrder,
     getOrders,
     getOrder,

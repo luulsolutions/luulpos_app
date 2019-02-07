@@ -29,6 +29,7 @@ import { forgotPassword, changePassword } from './PasswordSagas'
 import { getAccount, updateAccount } from './AccountSagas'
 import { getUser, getUsers, updateUser, deleteUser } from './UserSagas'
 import {
+	createOrder,
 	getOrder,
 	getOrders,
 	updateOrder,
@@ -90,6 +91,7 @@ export default function* root() {
 		takeLatest(UserTypes.USER_UPDATE_REQUEST, updateUser, api),
 		takeLatest(UserTypes.USER_DELETE_REQUEST, deleteUser, api),
 
+		takeLatest(OrderTypes.CUSTOMER_ORDER_CREATE,  createOrder, api),
 		takeLatest(OrderTypes.ORDER_REQUEST, getOrder, api),
 		takeLatest(OrderTypes.ORDER_ALL_REQUEST, getOrders, api),
 		takeLatest(OrderTypes.ORDER_UPDATE_REQUEST, updateOrder, api),

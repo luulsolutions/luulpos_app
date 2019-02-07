@@ -10089,6 +10089,11 @@ react-native-breadcrumb@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-native-breadcrumb/-/react-native-breadcrumb-1.0.1.tgz#aafee42c6d7403b268ff2d20e24b9881e7e2a56b"
   integrity sha512-L1AJTQg8ZoetH1gU3wZ5Ns0J1ZS4k0QEZFmbbETAQ8GTyoZX9XjAVZjOCLMtbNdxk5u4uAwAgN6zR8Aw1Hcfsg==
 
+react-native-calculator@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-calculator/-/react-native-calculator-0.5.0.tgz#dfcb7f577dba8a339e83fc6d67a613d98ef3da9a"
+  integrity sha512-wxY1gelrRay34mB+cNPlT97nBrNrv13J7x1A23PQ2lIrcV8JyX9DdiAXZKRaOV2EEeIS0J3qej+UHOt0d9WCKw==
+
 react-native-compat@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-compat/-/react-native-compat-1.0.0.tgz#491dbd8a0105ac061b8d0d926463ce6a3dff33bc"

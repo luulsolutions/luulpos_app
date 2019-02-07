@@ -36,7 +36,7 @@
       "prettier": "prettier './App/**/*.js'",
       "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
       "postinstall": "node xcode_10_setup.js",
-       "crl": "cp -r ../realm-ios ./node_modules/realm/vendor",
+      "crl": "cp -r ../realm-ios ./node_modules/realm/vendor",
       "debug": "open rndebugger://set-debugger-loc?host=localhost&port=19001"
    },
    "dependencies": {
@@ -56,6 +56,7 @@
       "react-native-big-slider": "^0.1.1",
       "react-native-blur": "^3.2.2",
       "react-native-breadcrumb": "^1.0.1",
+      "react-native-calculator": "^0.5.0",
       "react-native-create-bridge": "^2.0.1",
       "react-native-device-detection": "^0.2.0",
       "react-native-dialog-component": "^0.2.17",
