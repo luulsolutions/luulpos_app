@@ -62,36 +62,36 @@ class ProductVariant extends React.PureComponent {
 			price = product.price
 		}
 		let nPrice = price;
-         price = price+price*(options.surchargePercentage/100);
-		var orderDTO = {
-			orderDTO: {
-				description: productDTO.productName,
-				customerName: 'unKnown',
-				totalPrice: price,
-				quantity: 1,
-				discountPercentage: discountPercentage,
-				discountAmount: 0,
-				taxPercentage: taxPercentage,
-				taxAmount: 0,
-				orderStatus: 'PENDING',
-				paymentMethodId: 1,
-				paymentMethodPaymentMethod: 'Cash',
-				soldById: this.props.account.id,
-				soldByFirstName: this.props.account.firstName,
-				preparedById: this.props.account.id,
-				preparedByFirstName: this.props.account.firstName,
-				shopDeviceId: 1,
-				shopDeviceDeviceName: 'iPad Number 1',
-				sectionTableId: options.id,
-				sectionTableTableNumber: options.tableNumber,
-				shopSectionId: options.shopSectionsId,
-				surchargePercentage:options.surchargePercentage,
-				shopSectionName:options.shopSectionName,
-				shopId: productDTO.shopId,
-				shopShopName: productDTO.shopShopName
-			},
-			ordersLineDTOFullList: [
-				{
+		 price = price+price*(options.surchargePercentage/100);
+ 		var orderDTO = {
+				orderDTO: {
+					description: productDTO.productName,
+					customerName: 'unKnown',
+					totalPrice: price,
+					quantity: 1,
+					discountPercentage: discountPercentage,
+					discountAmount: 0,
+					taxPercentage: taxPercentage,
+					taxAmount: 0,
+					orderStatus: 'PENDING',
+					paymentMethodId: 1,
+					paymentMethodPaymentMethod: 'Cash',
+					soldById: this.props.account.id,
+					soldByFirstName: this.props.account.firstName,
+					preparedById: this.props.account.id,
+					preparedByFirstName: this.props.account.firstName,
+					shopDeviceId: 1,
+					shopDeviceDeviceName: 'iPad Number 1',
+					sectionTableId: options.id,
+					sectionTableTableNumber: options.tableNumber,
+					shopSectionId: options.shopSectionsId,
+					surchargePercentage:options.surchargePercentage,
+					shopSectionName:options.shopSectionName,
+					shopId: productDTO.shopId,
+					shopShopName: productDTO.shopShopName
+				},
+				ordersLineDTOFullList: [
+				  {
 					ordersLineDTO: {
 						ordersLineName: productDTO.productName,
 						ordersLineValue: productDTO.productName,
@@ -103,11 +103,15 @@ class ProductVariant extends React.PureComponent {
 						productId: productDTO.id,
 						productProductName: productDTO.productName
 					},
-					ordersLineVariantsDTOFullList: product
-				}
+					ordersLineVariantsDTOFullList: [{
+						ordersLineVariantDTO: product,
+						  "ordersLineExtraDTOList": []
+						
+					}]
+				  },
 			]
 		}
-		this.setState({ order: orderDTO }, () =>
+ 		this.setState({ order: orderDTO }, () =>
 			console.tron.display({
 				name: '🔥 OrderDTO 🔥',
 				preview: 'this is OrderDTO',
@@ -128,7 +132,7 @@ class ProductVariant extends React.PureComponent {
 
 	// this function is triggerd as prop in ProductModifiers
 	onSaveOrder = () => {
-		console.tron.log('full order', this.state.order)
+		console.tron.log('full order', this.props.product)
 		if (this.state.order) {
 			this.setState({ orderDone: true }, () => this.props.customerOrderSave(this.state.order))
 		} else {
@@ -202,8 +206,7 @@ class ProductVariant extends React.PureComponent {
 				? _.values(this.props.product.productVariantsDTOList)
 				: []
 			this.setState({ dataObjects: array })
-
-			//automatically put all variant to order line if  product is multi Variant
+ 			//automatically put all variant to order line if  product is multi Variant
 			if (this.props.product.productDTO.isVariantProduct) {
 				this._prepareOrderDTO(_.values(this.props.product.productVariantsDTOList))
 			}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView,Image, Text, FlatList } from 'react-native'
+import { View, ScrollView,Image, Text, FlatList, Modal, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
 import { Colors, Images } from '../../../Themes'
 import {_} from 'lodash'
@@ -22,39 +22,76 @@ class Payments extends React.PureComponent {
 	state = {
 		status: 'info',
 		order:'',
-		payment: ""
-	}
-
-
-	_done = function(){
-		const payment = {
-			"amount": 1,
-			"curency": "dollar",
-			"customerName": "string",
-			"id": 0,
-			"orderDescription": "string",
-			"orderId": 0,
-			"paymentDate": "2019-02-06T15:12:08.136Z",
-			"paymentMethodId": 0,
-			"paymentMethodPaymentMethod": "string",
-			"paymentProvider": "string",
-			"paymentStatus": "PENDING",
-			"processedByFirstName": "string",
-			"processedById": 0,
-			"shopId": 0,
-			"shopShopName": "string"
-		}
-		const Orders= {
-			orderDTO: this.props.order.orderDTO,
-			ordersLineDTOFullList: this.props.order.ordersLineDTOFullList,
-			paymentDTOList:payment
-			
-		}
+		payment: "",
+		modalVisible: false,
 		
-		this.props.customerOrderCreate(Orders)
+		
+	}
+	setModalVisible(visible) {
+		this.setState({modalVisible: visible});
+	  }
+
+	 
+	done = function(){
+		var orderDTO = this.props.order.orderDTO
+		const payment =   
+		{
+			orderDTO: {
+			 
+			  "customerName": orderDTO.customerName,
+			  "totalPrice": orderDTO.totalPrice,
+			  "quantity": orderDTO.quantity,
+			  "discountPercentage": orderDTO.discountPercentage,
+			  "discountAmount": orderDTO.discountAmount,
+			  "taxPercentage": orderDTO.taxPercentage,
+			  "taxAmount": orderDTO.taxAmount,
+			  "orderStatus": orderDTO.orderStatus,
+			  "note": "",
+			  "isVariantOrder": false,
+			  "paymentMethodId": orderDTO.paymentMethodId,
+			  "paymentMethodPaymentMethod":"cash",
+			  "soldById": "1",
+			  "soldByFirstName": "Ahmed",
+			  "preparedById": "1",
+			  "preparedByFirstName": "Ahmed",
+			  "shopDeviceId": orderDTO.shopDeviceId,
+			  "shopDeviceDeviceName": orderDTO.shopDeviceDeviceName,
+			  "sectionTableId": orderDTO.sectionTableId,
+			  "sectionTableTableNumber": orderDTO.sectionTableTableNumber,
+			  "shopId": orderDTO.shopId,
+			  "shopShopName": orderDTO.shopShopName
+			},
+			ordersLineDTOFullList:this.props.order.ordersLineDTOFullList,
+			paymentDTOList: [
+			  {
+			   "paymentProvider": "iZettle",
+				"amount": 10,
+				"paymentStatus": "PAID",
+				"curency": "GBP",
+				"customerName": "Mohamed Ali",
+				"shopId": 1,
+				"shopShopName": "Oasis Shisha Lounge in Acton",
+				"processedById": 1,
+				"processedByFirstName": "Ahmed",
+				"paymentMethodId": 2,
+				"paymentMethodPaymentMethod": "Card",
+				"orderDescription": "Grape and Mint + Oreo Milkshake"
+			  },
+			   
+			]
+		  }
+		this.props.customerOrderCreate(payment)
+		
+		 
+	}
+ 
+
+	componentDidMount(){
+		this.setState({
+			order:this.props.order
+		})
 
 	}
-
 
 	
 	_renderHeader(){
@@ -122,8 +159,8 @@ class Payments extends React.PureComponent {
  
 	
 	render() {
-		console.tron.log('aaaaa',this.props.order.ordersLineDTOFullList )
-		return (
+		 
+ 		return (
 			 
             <View style={styles.container}>
  				<Header style={styles.header}>
@@ -171,9 +208,14 @@ class Payments extends React.PureComponent {
 					<Tab heading={ <TabHeading><Text>Cash Payment</Text></TabHeading>}>
 					<View style={{flex:1, justifyContent:"center", padding:50}}>
 					<Calculator style={{flex:1}} value={this.props.order}/> 	
-					<Button full  primary>
-						<Text style={{color:colors.white }} onPress={this._done()}>Done</Text>
+					<Button full  primary onPress={() => {
+							this.setModalVisible(true);
+						}}>
+						<Text style={{color:colors.white }}>Done</Text>
 					</Button>
+
+    
+					
 					</View>
 					   
 					</Tab>
@@ -185,7 +227,25 @@ class Payments extends React.PureComponent {
  
  				   </Col>
 				  </Grid>
-				 
+				 <Modal
+ 					animationType="slide"
+					transparent={false}
+					visible={this.state.modalVisible}
+					onRequestClose={() => {
+						Alert.alert('Modal has been closed.');
+					}}>
+ 
+					<View style={{flex:1, justifyContent:'center', alignContent:'center', alignItems:'center', alignSelf:'center', backgroundColor: colors.primary }}>
+						
+						<Card style={{flex:1}}>
+						<Button onPress={() => {
+							this.setModalVisible(!this.state.modalVisible);
+							}}>
+							<Icons name="x" color="white" size={30} />
+						</Button>
+						</Card>
+					</View>
+				</Modal>
  			 </View>
 		)
 	}
@@ -201,3 +261,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Payments)
+
+
+
+
+
+
