@@ -11,6 +11,8 @@ import { Navigation } from 'react-native-navigation'
 import Icons from 'react-native-vector-icons/Feather'
 import Calculator from '../../../Components/POS/calculator/index'
 import colors from '../../../Themes/Colors';
+import {appStack} from '../../../Navigation/Layouts'
+import CashModal from '../../../Components/POS/Orders/cashModal'
 import { success } from '../../../Redux/ProductVariantRedux';
 class Payments extends React.PureComponent {
  
@@ -18,17 +20,17 @@ class Payments extends React.PureComponent {
 	constructor(props) {
 		super(props)
 		Navigation.events().bindComponent(this)
-	}
+ 	}
 	state = {
 		status: 'info',
 		order:'',
 		payment: "",
-		modalVisible: false,
+		isModalVisible: false,
 		
 		
 	}
 	setModalVisible(visible) {
-		this.setState({modalVisible: visible});
+ 		this.setState({isModalVisible: visible});
 	  }
 
 	 
@@ -87,6 +89,7 @@ class Payments extends React.PureComponent {
  
 
 	componentDidMount(){
+		console.tron.log('waan is afgaraney', this.onSave)
 		this.setState({
 			order:this.props.order
 		})
@@ -165,7 +168,7 @@ class Payments extends React.PureComponent {
             <View style={styles.container}>
  				<Header style={styles.header}>
 					<Left>
-                   <Icons name="arrow-left" size={30} color={colors.white}/>
+                   <Icons name="arrow-left" size={30} color={colors.white} onPress={()=>appStack()}/>
 					</Left>
 					<Body>
 					<Image source={Images.toplogo} style={[ styles.topLogo]} />
@@ -207,13 +210,8 @@ class Payments extends React.PureComponent {
 					<Tabs>
 					<Tab heading={ <TabHeading><Text>Cash Payment</Text></TabHeading>}>
 					<View style={{flex:1, justifyContent:"center", padding:50}}>
-					<Calculator style={{flex:1}} value={this.props.order}/> 	
-					<Button full  primary onPress={() => {
-							this.setModalVisible(true);
-						}}>
-						<Text style={{color:colors.white }}>Done</Text>
-					</Button>
-
+					<Calculator style={{flex:1}} value={this.props.order}  /> 	
+					 
     
 					
 					</View>
@@ -227,25 +225,8 @@ class Payments extends React.PureComponent {
  
  				   </Col>
 				  </Grid>
-				 <Modal
- 					animationType="slide"
-					transparent={false}
-					visible={this.state.modalVisible}
-					onRequestClose={() => {
-						Alert.alert('Modal has been closed.');
-					}}>
- 
-					<View style={{flex:1, justifyContent:'center', alignContent:'center', alignItems:'center', alignSelf:'center', backgroundColor: colors.primary }}>
-						
-						<Card style={{flex:1}}>
-						<Button onPress={() => {
-							this.setModalVisible(!this.state.modalVisible);
-							}}>
-							<Icons name="x" color="white" size={30} />
-						</Button>
-						</Card>
-					</View>
-				</Modal>
+			
+			
  			 </View>
 		)
 	}

@@ -13,7 +13,7 @@
 //Packages
 import React, { Component } from 'react';
 import {View,Text,ToastAndroid, ScrollView} from 'react-native';
-
+import CashModal from '../Orders/cashModal'
 //Styles
 import styles from './styles';
 
@@ -26,7 +26,8 @@ const buttons = [
   ['7', '8', '9', '20'],
   ['4', '5', '6', '30'],
   ['1', '2', '3', '50'],
-  ['.', '0', '=',]
+  ['.', '0', ],
+  ['=']
 ]
 
 const initialOutput = '0';
@@ -41,6 +42,8 @@ export default class Calculator extends Component {
           _output: this.props.value.orderDTO.totalPrice,
           _mathExpression: '',
           _history: [],
+          isModalVisible: false,
+
       }
       this._handleEvent = this._handleEvent.bind(this);
       this._clearHistory = this._clearHistory.bind(this);
@@ -69,8 +72,9 @@ export default class Calculator extends Component {
           }
           break;
 
-        case buttons[4][2]:
+        case buttons[5][0]:
           this._evaluate();
+          this.setModalVisible(true);
           break;
 
         default:
@@ -86,6 +90,9 @@ export default class Calculator extends Component {
     }
   }
   
+  setModalVisible(visible) {
+    this.setState({isModalVisible: visible});
+   }
   //Function to concat user input to output screen
   _concatToOutput = (value) => {
     if(this.state._output.length>=maxLength){
@@ -128,6 +135,7 @@ export default class Calculator extends Component {
           _output: ''+dEval,
           _history: aHistory
         })
+        
       }
     }
     catch(exception){
@@ -169,8 +177,7 @@ export default class Calculator extends Component {
   }
  
   render() {
-    console.tron.log(this.state._output)
-    return (
+     return (
       <View style={styles.container}>
         
         <View style={styles.contOutput}>
@@ -181,6 +188,12 @@ export default class Calculator extends Component {
         <View style={styles.contButtons}>
           <NumberButtons onBtnPress={this._handleEvent} buttons={buttons}/>
         </View>
+        <CashModal 
+             value={this.state._output}
+             isModalVisible={this.state.isModalVisible}
+             order={this.props.value}
+             onCancel={this.onCancel}
+				/>
       </View>
     );
   }
